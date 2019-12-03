@@ -20,9 +20,9 @@ yum -y install zlib
 
 mkdir /root/composer
 cd /root/composer
-php -r "copy("https://getcomposer.org/installer", "composer-setup.php");"
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php composer-setup.php
-php -r "unlink("composer-setup.php");"
+php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 cd /root
 
@@ -36,7 +36,6 @@ sed -i -e "s/user = apache/user = nginx/" /etc/php-fpm.d/www.conf
 sed -i -e "s/group = apache/group = nginx/" /etc/php-fpm.d/www.conf
 sed -i -e "s/;listen.owner = nobody/listen.owner = nginx/" /etc/php-fpm.d/www.conf
 sed -i -e "s/;listen.group = nobody/listen.group = nginx/" /etc/php-fpm.d/www.conf
-# sed -i -e "s/listen = /run/php-fpm/php-fpm.sock/listen = 127.0.0.1:9000/" /etc/php-fpm.d/www.conf
 sed -i -e "s/listen.acl_users = apache,nginx/;listen.acl_users = /" /etc/php-fpm.d/www.conf
 
 cp ${NGINX_CONF} /etc/nginx/conf.d/default.conf
