@@ -2,6 +2,7 @@ version: '3'
 services:
     web:
         build: ./docker/web
+        restart: always
         ports:
             - '8080:80'
         volumes:
@@ -9,7 +10,8 @@ services:
         depends_on:
             - db
     db:
-        build: ./docker/db
+        image: mysql
+        restart: always
         ports:
             - '3306:3306'
         environment:
