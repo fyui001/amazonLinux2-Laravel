@@ -1,0 +1,12 @@
+version: '3'
+services:
+    web:
+        image: ECR Repository
+        ports:
+            - '80:80'
+        logging:
+          driver: awslogs
+          options:
+            awslogs-group: LOG-GROUP_NAME
+            awslogs-region: ap-northeast-1
+            awslogs-stream-prefix: web
